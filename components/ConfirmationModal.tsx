@@ -1,68 +1,68 @@
-'use client';
+'use client'; // Indica que este componente é um Client Component do Next.js
 
-import { AnimatePresence, motion } from 'framer-motion';
-import { AlertTriangle } from 'lucide-react';
+import { AnimatePresence, motion } from 'framer-motion'; // Importa componentes para animação
+import { AlertTriangle } from 'lucide-react'; // Importa ícone de alerta
 
-interface ConfirmationModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-  onConfirm: () => void;
-  title: string;
-  children: React.ReactNode;
-  isConfirming?: boolean;
+interface ConfirmationModalProps { // Define as props do modal de confirmação
+  isOpen: boolean; // Indica se o modal está aberto
+  onClose: () => void; // Função para fechar o modal
+  onConfirm: () => void; // Função chamada ao confirmar a ação
+  title: string; // Título do modal
+  children: React.ReactNode; // Conteúdo do modal (mensagem)
+  isConfirming?: boolean; // Indica se está processando a confirmação
 }
 
 export default function ConfirmationModal({
-  isOpen,
-  onClose,
-  onConfirm,
-  title,
-  children,
-  isConfirming = false
+  isOpen, // Estado de abertura do modal
+  onClose, // Função para fechar
+  onConfirm, // Função para confirmar
+  title, // Título do modal
+  children, // Conteúdo do modal
+  isConfirming = false // Estado de confirmação (padrão: false)
 }: ConfirmationModalProps) {
   return (
-    <AnimatePresence>
-      {isOpen && (
+    <AnimatePresence> {/* Controla a presença animada do modal */}
+      {isOpen && ( // Renderiza o modal se isOpen for true
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          onClick={onClose}
-          className="fixed inset-0 z-50 grid place-items-center bg-black/50 backdrop-blur-sm cursor-pointer"
+          initial={{ opacity: 0 }} // Estado inicial da opacidade do fundo
+          animate={{ opacity: 1 }} // Estado animado da opacidade do fundo
+          exit={{ opacity: 0 }} // Estado ao sair (desmontar)
+          onClick={onClose} // Fecha o modal ao clicar no fundo
+          className="fixed inset-0 z-50 grid place-items-center bg-black/50 backdrop-blur-sm cursor-pointer" // Estilos do fundo do modal
         >
           <motion.div
-            initial={{ scale: 0.9, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0.9, opacity: 0 }}
-            transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-            onClick={(e) => e.stopPropagation()}
-            className="w-full max-w-md bg-white dark:bg-slate-900 rounded-2xl p-8 cursor-default"
+            initial={{ scale: 0.9, opacity: 0 }} // Estado inicial do conteúdo (escala e opacidade)
+            animate={{ scale: 1, opacity: 1 }} // Estado animado do conteúdo
+            exit={{ scale: 0.9, opacity: 0 }} // Estado ao sair do conteúdo
+            transition={{ type: 'spring', damping: 25, stiffness: 300 }} // Configuração da animação
+            onClick={(e) => e.stopPropagation()} // Impede que o clique no conteúdo feche o modal
+            className="w-full max-w-md bg-white dark:bg-slate-900 rounded-2xl p-8 cursor-default" // Estilos do conteúdo do modal
           >
-            <div className="flex flex-col items-center text-center">
-              <div className="p-3 bg-red-100 dark:bg-red-900/50 rounded-full mb-4">
-                <AlertTriangle size={32} className="text-red-600 dark:text-red-400" />
+            <div className="flex flex-col items-center text-center"> {/* Container centralizado */}
+              <div className="p-3 bg-red-100 dark:bg-red-900/50 rounded-full mb-4"> {/* Fundo do ícone */}
+                <AlertTriangle size={32} className="text-red-600 dark:text-red-400" /> {/* Ícone de alerta */}
               </div>
-              <h3 className="text-xl font-bold mb-2">{title}</h3>
+              <h3 className="text-xl font-bold mb-2">{title}</h3> {/* Título do modal */}
               <div className="text-slate-600 dark:text-slate-400 mb-6">
-                {children}
+                {children} {/* Mensagem ou conteúdo do modal */}
               </div>
-              <div className="flex w-full space-x-4">
+              <div className="flex w-full space-x-4"> {/* Container dos botões */}
                 <button
-                  onClick={onClose}
-                  disabled={isConfirming}
+                  onClick={onClose} // Fecha o modal ao clicar
+                  disabled={isConfirming} // Desabilita se estiver confirmando
                   className="flex-1 p-3 rounded-lg bg-slate-200 dark:bg-slate-700 font-semibold hover:bg-slate-300 dark:hover:bg-slate-600 transition-colors disabled:opacity-50"
                 >
                   Cancelar
                 </button>
                 <button
-                  onClick={onConfirm}
-                  disabled={isConfirming}
+                  onClick={onConfirm} // Chama a função de confirmação
+                  disabled={isConfirming} // Desabilita se estiver confirmando
                   className="flex-1 p-3 rounded-lg bg-red-600 text-white font-semibold hover:bg-red-700 transition-colors disabled:bg-red-400 flex justify-center items-center"
                 >
-                  {isConfirming ? (
+                  {isConfirming ? ( // Se estiver confirmando, mostra spinner
                     <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
                   ) : (
-                    'Sim, Deletar'
+                    'Sim, Deletar' // Senão, mostra texto padrão
                   )}
                 </button>
               </div>

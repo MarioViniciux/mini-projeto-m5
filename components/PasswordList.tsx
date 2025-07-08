@@ -1,18 +1,18 @@
-'use client';
+'use client'; // Indica que este componente é um Client Component do Next.js
 
-import { Eye, EyeOff, Trash2, Clipboard, Pencil, User, Mail, FileText } from 'lucide-react';
-import { useState } from 'react';
-import axios from 'axios';
-import { toast } from 'react-hot-toast';
+import { Eye, EyeOff, Trash2, Clipboard, Pencil, User, Mail, FileText } from 'lucide-react'; // Importa ícones
+import { useState } from 'react'; // Importa hook de estado do React
+import axios from 'axios'; // Importa o axios para requisições HTTP
+import { toast } from 'react-hot-toast'; // Importa o toast para notificações
 
-interface Password {
-  id: number;
-  service: string;
-  username?: string;
-  email?: string;
-  notes?: string;
-  tags?: { id: number; name: string }[];
-  password?: string;
+interface Password { // Define a interface Password para tipar os dados das senhas
+  id: number; // ID da senha
+  service: string; // Nome do serviço
+  username?: string; // Nome de usuário (opcional)
+  email?: string; // Email (opcional)
+  notes?: string; // Notas (opcional)
+  tags?: { id: number; name: string }[]; // Lista de tags (opcional)
+  password?: string; // Senha (opcional)
 }
 
 function PasswordCard({ 
@@ -24,64 +24,65 @@ function PasswordCard({
   onAskForDelete: (password: Password) => void,
   onAskForEdit: (password: Password) => void
 }) {
-  const [isVisible, setIsVisible] = useState(false);
-  const [fullPassword, setFullPassword] = useState<string | null>(null);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isVisible, setIsVisible] = useState(false); // Estado para mostrar/esconder senha
+  const [fullPassword, setFullPassword] = useState<string | null>(null); // Estado para senha completa
+  const [isLoading, setIsLoading] = useState(false); // Estado de carregamento
 
-  const toggleVisibility = async () => {
+  const toggleVisibility = async () => { // Alterna a visibilidade da senha
     if (isVisible) {
-      setIsVisible(false);
-      setFullPassword(null); 
+      setIsVisible(false); // Esconde a senha
+      setFullPassword(null); // Limpa a senha completa
       return;
     }
-    setIsLoading(true);
+    setIsLoading(true); // Inicia carregamento
     try {
-      const response = await axios.get(`/api/passwords/${password.id}`);
-      setFullPassword(response.data.password);
-      setIsVisible(true);
+      const response = await axios.get(`/api/passwords/${password.id}`); // Busca a senha completa na API
+      setFullPassword(response.data.password); // Salva a senha completa
+      setIsVisible(true); // Mostra a senha
     } catch (error) {
-      console.error("Falha ao buscar senha:", error);
-      toast.error("Falha ao buscar senha.");
+      console.error("Falha ao buscar senha:", error); // Loga erro
+      toast.error("Falha ao buscar senha."); // Mostra erro ao usuário
     } finally {
-      setIsLoading(false);
+      setIsLoading(false); // Finaliza carregamento
     }
   }
 
-  const handleCopy = (textToCopy: string | undefined, fieldName: string) => {
+  const handleCopy = (textToCopy: string | undefined, fieldName: string) => { // Função para copiar texto para a área de transferência
     if (!textToCopy) return;
     navigator.clipboard.writeText(textToCopy).then(() => {
-      toast.success(`${fieldName} copiado(a) com sucesso!`);
+      toast.success(`${fieldName} copiado(a) com sucesso!`); // Mostra sucesso ao copiar
     });
   };
     
-  const handleCopyPassword = async () => {
+  const handleCopyPassword = async () => { // Função para copiar a senha
     if (fullPassword) {
-      handleCopy(fullPassword, 'Senha');
+      handleCopy(fullPassword, 'Senha'); // Copia a senha já carregada
       return;
     }
 
-    setIsLoading(true);
-      try {
-        const response = await axios.get(`/api/passwords/${password.id}`);
-        const passwordToCopy = response.data.password; 
+    setIsLoading(true); // Inicia carregamento
+    try {
+      const response = await axios.get(`/api/passwords/${password.id}`); // Busca a senha completa na API
+      const passwordToCopy = response.data.password; 
 
-        if (passwordToCopy) {
-          setFullPassword(passwordToCopy); 
-          handleCopy(passwordToCopy, 'Senha');
-        } else {
-          toast.error("Não foi possível obter a senha.");
-        }} catch (error) {
-          console.error("Falha ao buscar senha para copiar:", error);
-          toast.error("Falha ao buscar senha.");
-        } finally {
-          setIsLoading(false);
-        }
+      if (passwordToCopy) {
+        setFullPassword(passwordToCopy); // Salva a senha completa
+        handleCopy(passwordToCopy, 'Senha'); // Copia a senha
+      } else {
+        toast.error("Não foi possível obter a senha."); // Mostra erro se não conseguir senha
+      }
+    } catch (error) {
+      console.error("Falha ao buscar senha para copiar:", error); // Loga erro
+      toast.error("Falha ao buscar senha."); // Mostra erro ao usuário
+    } finally {
+      setIsLoading(false); // Finaliza carregamento
+    }
   };
 
   return (
     <div className="bg-white dark:bg-slate-800 p-4 rounded-xl shadow-md flex flex-col space-y-3">
       <div className="flex justify-between items-center">
-          <p className="font-bold text-lg">{password.service}</p>
+          <p className="font-bold text-lg">{password.service}</p> {/* Nome do serviço */}
           <div className="flex items-center space-x-2">
             <button onClick={() => onAskForEdit(password)} className="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-700 hover:cursor-pointer" title="Editar">
               <Pencil size={20} />
@@ -162,7 +163,7 @@ export default function PasswordList({
   onAskForEdit: (password: Password) => void
 }) {
   if (initialPasswords.length === 0) {
-    return <p className="text-center text-slate-500 mt-8">Nenhum resultado encontrado.</p>;
+    return <p className="text-center text-slate-500 mt-8">Nenhum resultado encontrado.</p>; // Mensagem se não houver senhas
   }
 
   return (
