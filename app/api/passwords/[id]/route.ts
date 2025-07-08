@@ -2,18 +2,13 @@ import { cookies } from 'next/headers';
 import { NextRequest, NextResponse } from 'next/server';
 import axios from 'axios';
 
-interface IParams {
-  params: {
-    id: string;
-  };
-}
-
 export async function GET(
   request: NextRequest,
-  context: IParams
+  context: { params: Promise<{ id: string }> }
 ) {
 
-  const { id } = context.params;
+  const { id } = await context.params;
+  console.log(`ID recebido: ${id}`);
 
   if (!id) {
     return NextResponse.json({ error: 'ID do parâmetro não encontrado' }, { status: 400 });
