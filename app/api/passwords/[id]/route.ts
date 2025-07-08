@@ -2,9 +2,15 @@ import { cookies } from 'next/headers';
 import { NextRequest, NextResponse } from 'next/server';
 import axios from 'axios';
 
+interface IParams {
+  params: {
+    id: string;
+  };
+}
+
 export async function GET(
   request: NextRequest,
-  context: { params: { id: string } }
+  context: IParams
 ) {
 
   const { id } = context.params;
