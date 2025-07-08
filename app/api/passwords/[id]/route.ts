@@ -6,7 +6,10 @@ export async function GET(
   request: NextRequest,
   { params }: { params: { id: string } }
 ) {
-  if (!params.id) {
+
+  const { id } = params;
+
+  if (!id) {
     return NextResponse.json({ error: 'ID do parâmetro não encontrado' }, { status: 400 });
   }
 
@@ -16,9 +19,10 @@ export async function GET(
   }
 
   try {
-    const response = await axios.get(`${process.env.URL_BACKEND}/passwords/${params.id}`, {
+    const response = await axios.get(`${process.env.URL_BACKEND}/passwords/${id}`, {
       headers: { Authorization: `Bearer ${token}` },
     });
+    
     return NextResponse.json(response.data);
   } catch (error) {
     console.error("Erro ao chamar a API externa:", error);
