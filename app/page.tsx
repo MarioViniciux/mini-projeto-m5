@@ -46,14 +46,14 @@ export default function Home() {
                         </div>
                     </nav>
                 </header>
-            </div>
 
-            <main className='flex-grow flex flex-col items-center justify-center text-center p-8'>
-                <h1 className='text-5xl md:text-7xl font-extrabold bg-clip-text bg-gradient-to-r from-blue-500 to-violet-500'>Segurança e Simplicidade</h1>
-                <p className='mt-4 max-w-2xl text-lg text-slate-600 dark:text-slate-400'>
-                    Gerencie suas senhas com uma API robusta e uma interface intuitiva. Foque no que importa, nós cuidamos do resto.
-                </p>
-            </main>
+                <main className='flex-grow flex flex-col items-center justify-center text-center p-8'>
+                    <h1 className='text-5xl md:text-7xl font-extrabold bg-clip-text bg-gradient-to-r from-blue-500 to-violet-500'>Segurança e Simplicidade</h1>
+                    <p className='mt-4 max-w-2xl text-lg text-slate-600 dark:text-slate-400'>
+                        Gerencie suas senhas com uma API robusta e uma interface intuitiva. Foque no que importa, nós cuidamos do resto.
+                    </p>
+                </main>
+            </div>
         </>
     )
 }
