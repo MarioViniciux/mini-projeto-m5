@@ -14,9 +14,9 @@ export default function RootLayout({ // Exporta o componente RootLayout como pad
   children: React.ReactNode; // children deve ser um nó React
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning> {/* Define o idioma da página e suprime avisos de hidratação */}
-      <body> {/* Início do corpo da página */}
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem> {/* Provider para alternar temas, padrão escuro, permite tema do sistema */}
+    <html lang="en" suppressHydrationWarning>
+      <body>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           <Toaster 
             position="bottom-right" // Define a posição dos toasts no canto inferior direito
             toastOptions={{ // Opções de estilo para os toasts

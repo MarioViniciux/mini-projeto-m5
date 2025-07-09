@@ -3,7 +3,6 @@
 import { useState } from 'react'; // Importa o hook useState do React para gerenciar estado
 import Head from 'next/head'; // Importa o componente Head do Next.js para manipular o <head> da página
 import { LockKeyhole } from 'lucide-react'; // Importa o ícone LockKeyhole da biblioteca lucide-react
-import { ThemeSwitcher } from '@/components/ThemeSwitcher'; // Importa o componente ThemeSwitcher para alternar temas
 import AuthModal from '@/components/AuthModal'; // Importa o componente AuthModal para autenticação
 
 export default function Home() {
@@ -42,7 +41,6 @@ export default function Home() {
                         </div>
                         <div className='flex items-center space-x-4'>
                             {/* Botões de ação no cabeçalho */}
-                            <ThemeSwitcher /> {/* Componente para alternar tema claro/escuro */}
                             <button className='hidden sm:block font-medium hover:text-blue-600 transition-colors'>
                                 {/* Botão "Sobre" visível apenas em telas médias para cima */}
                                 <a href="https://github.com/MarioViniciux/mini_projeto_m4/tree/main" target='_blank'>Sobre</a>
@@ -55,9 +53,9 @@ export default function Home() {
 
                 <main className='flex-grow flex flex-col items-center justify-center text-center p-8'>
                     {/* Conteúdo principal centralizado vertical e horizontalmente */}
-                    <h1 className='text-5xl md:text-7xl font-extrabold bg-clip-text bg-gradient-to-r from-blue-500 to-violet-500'>Segurança e Simplicidade</h1>
+                    <h1 className='text-5xl md:text-7xl font-extrabold'>Segurança e Simplicidade</h1>
                     {/* Título principal com gradiente */}
-                    <p className='mt-4 max-w-2xl text-lg text-slate-600 dark:text-slate-400'>
+                    <p className='mt-6 max-w-2xl text-lg text-slate-600 dark:text-slate-400'>
                         Gerencie suas senhas com uma API robusta e uma interface intuitiva. Foque no que importa, nós cuidamos do resto.
                     </p> {/* Descrição da aplicação */}
                 </main>

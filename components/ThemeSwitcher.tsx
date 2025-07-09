@@ -19,7 +19,7 @@ export const ThemeSwitcher = () => { // Componente para alternar tema
                 className='p-2 rounded-full bg-slate-200 dark:bg-slate-800' // Estilos do botão
                 aria-label='Mudar tema' // Acessibilidade
             >
-                {theme === 'dark' ? <Sun size={20}/> : <Moon size={20}/>} // Ícone muda conforme tema
+                {theme === 'dark' ? <Sun size={20}/> : <Moon size={20}/>} 
             </button>
         </div>
     )
