@@ -20,7 +20,6 @@ O frontend foi desenvolvido com **React** e estilizado com **Tailwind CSS** para
   - **Gerador de Senhas Seguras:** Ferramenta para gerar senhas aleatórias e fortes.
   - **Verificação de Vazamentos:** Integração com a API "Have I Been Pwned" para verificar se uma senha já foi exposta em vazamentos de dados conhecidos.
   - **Autenticação de Usuários:** Sistema de login e registro para que cada usuário tenha acesso apenas às suas próprias senhas.
-  - **Tema Claro e Escuro (Dark Mode):** Opção para alternar entre temas. (atualmente, com erro).
 
 ## 🛠️ Tecnologias Utilizadas
 
