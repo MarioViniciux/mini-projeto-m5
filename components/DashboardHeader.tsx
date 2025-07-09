@@ -11,9 +11,8 @@ export default function DashboardHeader({ onReset }: { onReset: () => void }) { 
   };
 
   return (
-    <header className="bg-white dark:bg-slate-800 shadow-sm p-4"> {/* Cabeçalho com fundo, sombra e padding */}
+    <header className="bg-white dark:bg-slate-800 shadow-sm p-4 rounded-2xl"> {/* Cabeçalho com fundo, sombra e padding */}
       <div className="max-w-4xl mx-auto flex justify-between items-center"> {/* Container centralizado e espaçado */}
-        
         <button 
           onClick={onReset}  // Chama função para resetar filtros ao clicar
           className="text-2xl font-bold hover:text-blue-600 transition-colors hover:cursor-pointer"

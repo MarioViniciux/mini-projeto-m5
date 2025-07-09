@@ -8,7 +8,7 @@ function SubmitButton() { // Componente para o botão de submit
   const { pending } = useFormStatus(); // Obtém status do formulário
   return (
     <button type="submit" disabled={pending} className="w-full p-3 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700 disabled:bg-slate-400">
-      {pending ? 'Entrando...' : 'Entrar'} // Texto muda conforme status
+      {pending ? 'Entrando...' : 'Entrar'} {/* Texto muda conforme status */}
     </button>
   );
 }
@@ -37,7 +37,7 @@ export default function LoginForm({ setMode }: { setMode: (mode: 'login' | 'regi
                       className="w-full p-3 rounded-lg bg-slate-100 dark:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500" // Estilos do input
                     />
                 </div>
-                {state?.message && <p className="text-red-500 text-center">{state.message}</p>} // Exibe mensagem de erro, se houver
+                {state?.message && <p className="text-red-500 text-center">{state.message}</p>} {/* Exibe mensagem de erro, se houver */}
                 <SubmitButton /> {/* Botão de submit */}
             </form>
              <p className="text-center text-sm">

@@ -4,7 +4,7 @@ import { zxcvbn, ZxcvbnResult } from '@zxcvbn-ts/core'; // Importa a função e 
 import { useMemo } from 'react'; // Importa hook para memoização
 
 interface PasswordStrengthMeterProps { // Define as props do componente
-  password?: string; // Senha a ser analisada (opcional)
+  password?: string; // Senha a ser analisada
 }
 
 const PasswordStrengthMeter = ({ password }: PasswordStrengthMeterProps) => { // Componente principal

@@ -9,7 +9,7 @@ function SubmitButton() { // Componente para o botão de submit
   const { pending } = useFormStatus(); // Obtém status do formulário
   return (
     <button type="submit" disabled={pending} className="w-full p-3 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700 disabled:bg-slate-400">
-      {pending ? 'Registrando...' : 'Registrar'} // Texto muda conforme status
+      {pending ? 'Registrando...' : 'Registrar'} {/* Texto muda conforme status */}
     </button>
   );
 }

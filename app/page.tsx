@@ -43,7 +43,7 @@ export default function Home() {
                             {/* Botões de ação no cabeçalho */}
                             <button className='hidden sm:block font-medium hover:text-blue-600 transition-colors'>
                                 {/* Botão "Sobre" visível apenas em telas médias para cima */}
-                                <a href="https://github.com/MarioViniciux/mini_projeto_m4/tree/main" target='_blank'>Sobre</a>
+                                <a href="https://github.com/MarioViniciux/mini-projeto-m5" target='_blank'>Sobre</a>
                             </button>
                             <button onClick={() => openModal('login')} className='font-medium hover:text-blue-600 hoveR:cursor-pointer transition-colors'>Login</button> {/* Botão para abrir modal de login */}
                             <button onClick={() => openModal('register')} className='px-4 py-2 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 hover:cursor-pointer transition-colors'>Register</button> {/* Botão para abrir modal de registro */}
